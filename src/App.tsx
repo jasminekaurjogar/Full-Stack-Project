@@ -1,3 +1,5 @@
+import { SavingsGoals } from "./components/SavingsGoals/SavingsGoals";
+
 function App() {
   return (
     <>
@@ -12,6 +14,7 @@ function App() {
           This app will help users organize expenses, savings goals, and money
           habits.
         </p>
+        <SavingsGoals />
       </main>
 
       <footer>
