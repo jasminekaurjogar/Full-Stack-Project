@@ -1,12 +1,15 @@
-# MoneyMap Style Guide
+# Piggy Bank Style Guide
 
 ## Colours
 
-- Navy Blue: `#26358c`
-- Sky Blue: `#2c8ecb`
-- Light Background: `#f4f7fb`
+- Cream Background: `#faf4ed`
 - White: `#ffffff`
-- Dark Text: `#222222`
+- Light Cream Card: `#fffaf6`
+- Latte Border: `#ead8c5`
+- Light Coffee: `#c9a27e`
+- Soft Brown: `#8b6f5a`
+- Text Brown: `#4f4036`
+- Small Text Brown: `#6f5b4b`
 
 ## Fonts
 
@@ -15,13 +18,13 @@
 
 ## Font Sizes
 
-- Page Title: 32px
+- Page Title: 36px
 - Section Title: 24px
 - Body Text: 16px
 
 ## Style Notes
 
-- Use navy blue for main headings.
-- Use sky blue for borders and small highlights.
-- Keep the page background light.
+- Use soft brown for main headings.
+- Use light coffee for borders and highlights.
+- Keep the page background cream and neutral.
 - Keep the layout simple and easy to read.
