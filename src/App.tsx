@@ -1,4 +1,5 @@
 import { SavingsGoals } from "./components/SavingsGoals/SavingsGoals";
+import ExpenseCategories from "./components/ExpenseCategories/ExpenseCategories";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           habits.
         </p>
         <SavingsGoals />
+        <ExpenseCategories />
       </main>
 
       <footer>
