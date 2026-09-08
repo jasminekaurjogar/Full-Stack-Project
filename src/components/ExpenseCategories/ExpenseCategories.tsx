@@ -36,12 +36,22 @@ function ExpenseCategories() {
     },
   ];
 
+  // Add up every category budget to show the total monthly spending plan
+  let totalBudget = 0;
+  for (const category of categories) {
+    totalBudget = totalBudget + category.budget;
+  }
+
   return (
     <section className="ExpenseCategories">
       <h2>Expense Categories</h2>
       <p>
         Track your student budget across different daily spending categories to
         stay on top of your finances.
+      </p>
+      <p className="ExpenseCategories-summary">
+        You are tracking {categories.length} categories with a total monthly
+        budget of ${totalBudget}.
       </p>
     </section>
   );
