@@ -1,0 +1,34 @@
+.app-logo {
+  width: 95px;
+  height: auto;
+  padding: 8px;
+  background-color: #faf4ed;
+  border-radius: 16px;
+}
+
+.savings-goals {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #ead8c5;
+  border-left: 7px solid #c9a27e;
+  border-radius: 16px;
+  background-color: #fffaf6;
+}
+
+.savings-goals h2 {
+  margin-top: 0;
+  color: #8b6f5a;
+}
+
+.savings-goals ul {
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+.savings-goals li {
+  margin: 8px 0;
+}
+
+.savings-goals strong {
+  color: #8b6f5a;
+}

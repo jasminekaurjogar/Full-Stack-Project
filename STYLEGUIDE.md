@@ -1,13 +1,15 @@
-# Pink Piggy Style Guide
+# Piggy Bank Style Guide
 
 ## Colours
 
-- Nude Background: `#f8efe9`
-- Soft Pink: `#f3c6d3`
-- Sky Blue: `#9fd3f6`
-- Purple: `#9b6f9e`
+- Cream Background: `#faf4ed`
 - White: `#ffffff`
-- Dark Plum Text: `#4b2e4f`
+- Light Cream Card: `#fffaf6`
+- Latte Border: `#ead8c5`
+- Light Coffee: `#c9a27e`
+- Soft Brown: `#8b6f5a`
+- Text Brown: `#4f4036`
+- Small Text Brown: `#6f5b4b`
 
 ## Fonts
 
@@ -16,13 +18,13 @@
 
 ## Font Sizes
 
-- Page Title: 32px
+- Page Title: 36px
 - Section Title: 24px
 - Body Text: 16px
 
 ## Style Notes
 
-- Use purple for main headings.
-- Use soft pink and sky blue for borders and small highlights.
-- Keep the page background nude and light.
+- Use soft brown for main headings.
+- Use light coffee for borders and highlights.
+- Keep the page background cream and neutral.
 - Keep the layout simple and easy to read.

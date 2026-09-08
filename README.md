@@ -1,4 +1,4 @@
-# Pink Piggy
+# Piggy Bank
 
 ## Team Members
 
@@ -7,7 +7,7 @@
 
 ## Project Description
 
-Pink Piggy is a simple personal finance tracker. It will help users organize
+Piggy Bank is a simple personal finance tracker. It will help users organize
 expenses, savings goals, and basic money habits.
 
 For Sprint 1, this project will be a static React page. Later, the app can add
