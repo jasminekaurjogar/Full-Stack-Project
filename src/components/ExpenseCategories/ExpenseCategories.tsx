@@ -53,6 +53,17 @@ function ExpenseCategories() {
         You are tracking {categories.length} categories with a total monthly
         budget of ${totalBudget}.
       </p>
+
+      {/* Loop through the array and build one list item for each category */}
+      <ul className="ExpenseCategories-list">
+        {categories.map((category) => (
+          <li className="ExpenseCategories-card" key={category.id}>
+            <h3>{category.name}</h3>
+            <p className="ExpenseCategories-budget">${category.budget} / month</p>
+            <p>{category.description}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
