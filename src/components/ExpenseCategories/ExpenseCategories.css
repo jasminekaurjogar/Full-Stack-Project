@@ -1,0 +1,19 @@
+/* Styles that only apply to the ExpenseCategories component */
+
+.ExpenseCategories {
+  margin-top: 32px;
+}
+
+/* Section title uses the navy blue from our style guide */
+.ExpenseCategories h2 {
+  color: #26358c;
+  font-size: 24px;
+}
+
+/* Summary line stands out from the normal body text */
+.ExpenseCategories-summary {
+  font-weight: bold;
+  color: #26358c;
+  border-left: 4px solid #2c8ecb;
+  padding-left: 10px;
+}

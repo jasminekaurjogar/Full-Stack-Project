@@ -1,3 +1,5 @@
+import "./ExpenseCategories.css";
+
 // Interface to define the data structure for each expense category
 export interface ExpenseCategory {
   id: number;
