@@ -15,7 +15,7 @@ const savingsGoals = [
 
 export function SavingsGoals() {
   return (
-    <section className="savings-goals">
+    <section className="savings-goals" id="goals">
       <h2>Savings Goals</h2>
       <p>These are some example goals that a user could track in Piggy Bank.</p>
 

@@ -1,0 +1,73 @@
+/* Styles that only apply to the ExpenseCategories component */
+
+.ExpenseCategories {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #d8e7ef;
+  border-left: 7px solid #83b6c9;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(22px);
+}
+
+/* Section title uses the blue accent from our style guide */
+.ExpenseCategories h2 {
+  margin-top: 0;
+  color: #3e6f89;
+  font-size: 24px;
+}
+
+/* Summary line stands out from the normal body text */
+.ExpenseCategories-summary {
+  font-weight: bold;
+  color: #3e6f89;
+  border-left: 4px solid #83b6c9;
+  padding-left: 10px;
+}
+
+/* Turn the list into a grid of cards and remove the bullet points */
+.ExpenseCategories-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Each category is shown as a card with a light blue border */
+.ExpenseCategories-card {
+  background-color: rgba(255, 255, 255, 0.32);
+  border: 1px solid #d8e7ef;
+  border-radius: 16px;
+  padding: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ExpenseCategories-card:hover {
+  box-shadow: 0 8px 20px #9bb4c4;
+  transform: translateY(-4px);
+}
+
+.ExpenseCategories-card:active {
+  transform: translateY(1px);
+}
+
+.ExpenseCategories-card h3 {
+  margin: 0;
+  color: #3e6f89;
+  font-size: 20px;
+}
+
+/* Budget amount is the most important number on the card */
+.ExpenseCategories-budget {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #657399;
+}
+
+.ExpenseCategories-card p {
+  font-size: 16px;
+  color: #435466;
+}
