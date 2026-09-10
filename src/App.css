@@ -1,0 +1,269 @@
+.app-logo {
+  width: 95px;
+  height: auto;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  color: #29394a;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  color: #3e6f89;
+  transform: translateY(-2px);
+}
+
+nav a:active {
+  transform: translateY(1px);
+}
+
+button {
+  border: none;
+  border-radius: 22px;
+  padding: 10px 18px;
+  background-color: #3e6f89;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #29394a;
+  box-shadow: 0 6px 14px #a9bdca;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px #a9bdca;
+}
+
+.secondary-button {
+  background-color: #d8e7ef;
+  color: #29394a;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 230px;
+  padding: 32px;
+  border-radius: 22px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid #d8e7ef;
+  box-shadow: 0 8px 24px #a9bdca;
+  backdrop-filter: blur(22px);
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/piggy-bank-logo.png");
+  background-repeat: no-repeat;
+  background-position: right 30px center;
+  background-size: 260px;
+  opacity: 0.18;
+  filter: blur(3px);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 560px;
+}
+
+.hero-label {
+  margin: 0 0 8px;
+  font-weight: bold;
+  color: #657399;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-content h2 {
+  margin-top: 0;
+  font-size: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.hero-preview {
+  position: relative;
+  min-width: 210px;
+  padding: 20px;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(22px);
+  border: 1px solid #d8e7ef;
+  box-shadow: 0 6px 16px #a9bdca;
+}
+
+.hero-preview h3 {
+  margin-top: 0;
+  color: #3e6f89;
+}
+
+.hero-preview strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 26px;
+  color: #29394a;
+}
+
+.feature-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.feature-card,
+.money-notes {
+  padding: 18px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.28);
+  border: 1px solid #d8e7ef;
+  box-shadow: 0 4px 14px #b8cbd8;
+  backdrop-filter: blur(22px);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover,
+.money-notes:hover,
+.dashboard-card:hover,
+.savings-goals-card:hover {
+  box-shadow: 0 8px 20px #9bb4c4;
+  transform: translateY(-4px);
+}
+
+.feature-card:active,
+.money-notes:active,
+.dashboard-card:active,
+.savings-goals-card:active {
+  transform: translateY(1px);
+}
+
+.feature-card h3,
+.money-notes h2 {
+  margin-top: 0;
+  color: #3e6f89;
+}
+
+.money-notes {
+  margin-top: 24px;
+  border-left: 7px solid #83b6c9;
+}
+
+.dashboard-preview {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 18px;
+  background-color: rgba(255, 255, 255, 0.28);
+  border: 1px solid #d8e7ef;
+  backdrop-filter: blur(22px);
+}
+
+.dashboard-preview h2 {
+  margin-top: 0;
+}
+
+.dashboard-card {
+  padding: 18px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.32);
+  border: 1px solid #d8e7ef;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.progress-bar {
+  height: 14px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #d8e7ef;
+}
+
+.progress-bar span {
+  display: block;
+  width: 65%;
+  height: 100%;
+  background-color: #83b6c9;
+}
+
+.savings-goals {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #d8e7ef;
+  border-left: 7px solid #83b6c9;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(22px);
+}
+
+.savings-goals h2 {
+  margin-top: 0;
+  color: #3e6f89;
+}
+
+.savings-goals ul {
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+.savings-goals-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.savings-goals-card {
+  background-color: rgba(255, 255, 255, 0.32);
+  border: 1px solid #d8e7ef;
+  border-radius: 16px;
+  padding: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.savings-goals-card h3 {
+  margin: 0;
+  color: #3e6f89;
+  font-size: 20px;
+}
+
+.savings-goals-amount {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #657399;
+}
