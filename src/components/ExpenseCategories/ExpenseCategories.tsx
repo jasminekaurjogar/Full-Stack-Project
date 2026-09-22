@@ -45,7 +45,7 @@ function ExpenseCategories() {
   }
 
   return (
-    <section className="ExpenseCategories" id="expenses">
+    <section className="ExpenseCategories">
       <h2>Expense Categories</h2>
       <p>
         Track your student budget across different daily spending categories to
