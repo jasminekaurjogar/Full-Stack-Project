@@ -1,27 +1,56 @@
 # Piggy Bank
 
-## Team Members
+A personal finance app for tracking expenses, savings goals, and monthly progress.
 
-- Sehajpreet Kaur
-- Jasmine Kaur
+## Team
 
-## Project Description
+- Sehajpreet Kaur — Savings Goals page, routing setup, shared layout
+- Jasmine Kaur — Expense Categories page
 
-Piggy Bank is a simple personal finance tracker. It will help users organize
-expenses, savings goals, and basic money habits.
+## Repository
 
-For Sprint 1, this project will be a static React page. Later, the app can add
-login features so each user can save their own financial information.
+https://github.com/jasminekaurjogar/Full-Stack-Project
 
-## User Stories
+## What is finished (Sprint 1)
 
-- As a user, I want to track my expenses so I can see where my money is going.
-- As a user, I want to make savings goals so I can plan for future purchases.
-- As a user, I want to view simple money tips so I can improve my habits.
+- Vite + React + TypeScript project
+- Style guide and homepage layout
+- Savings Goals section
+- Expense Categories section
 
-## Tech Used
+## What we are building now (Sprint 2)
+
+- Multi-page navigation with React Router (`/`, `/goals`, `/expenses`)
+- Shared header, nav, and footer on every page
+- Shared `savedThisMonth` state that both pages can show and change
+- Savings Goals page: form to add a goal, button to remove a goal
+- Expense Categories page: form to add a category, button to remove a category
+
+## What is next this week
+
+1. Finish the shared `Layout`, `Nav`, `Footer`, and routes
+2. Sehajpreet completes the Savings Goals page (form + add/remove)
+3. Jasmine completes the Expense Categories page (form + add/remove)
+4. Each person reviews the other person’s pull request with 3–4 specific comments
+5. Merge into `develop`, then `main`, and use the Vercel production URL
+
+## Current challenges
+
+- The GitHub repo moved to Jasmine’s account. All new commits go to this repo, not the old Sprint 1 repo.
+- Vercel Hobby blocked collaborator previews while the repo was private. The repo is public now. Production deploys after a merge to `main`.
+- We should not both edit `App.tsx` at the same time. Shared routing goes in first, then each person stays in their own folder.
+
+## How to run
+
+```powershell
+npm install
+npm run dev
+```
+
+## Tech
 
 - Vite
 - React
 - TypeScript
 - CSS
+- React Router
