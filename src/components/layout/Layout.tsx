@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Nav } from "./Nav";
 
 export function Layout() {
   return (
@@ -16,14 +17,7 @@ export function Layout() {
           </div>
         </div>
 
-        <nav>
-          <a href="#features">Features</a>
-          <a href="#goals">Goals</a>
-          <a href="#expenses">Expenses</a>
-          <a className="nav-button" href="#goals">
-            Get Started
-          </a>
-        </nav>
+        <Nav />
       </header>
 
       <Outlet />
