@@ -1,5 +1,7 @@
+import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+
 // Landing page content, moved out of App so App only has to manage routes
-function Home() {
+function Home({ savedThisMonth, setSavedThisMonth }: SavedThisMonthProps) {
   return (
     <>
       <section className="hero-section">

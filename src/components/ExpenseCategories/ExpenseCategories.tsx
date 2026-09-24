@@ -1,3 +1,4 @@
+import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import "./ExpenseCategories.css";
 
 // Interface to define the data structure for each expense category
@@ -9,7 +10,10 @@ export interface ExpenseCategory {
 }
 
 // ExpenseCategories component to organize student spending categories
-function ExpenseCategories() {
+function ExpenseCategories({
+  savedThisMonth,
+  setSavedThisMonth,
+}: SavedThisMonthProps) {
   // Array of the main expense categories a student spends money on
   const categories: ExpenseCategory[] = [
     {
