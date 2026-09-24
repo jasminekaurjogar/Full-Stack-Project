@@ -13,7 +13,12 @@ const savingsGoals = [
   },
 ];
 
-export function SavingsGoals() {
+import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+
+export function SavingsGoals({
+  savedThisMonth,
+  setSavedThisMonth,
+}: SavedThisMonthProps) {
   return (
     <section className="savings-goals" id="goals">
       <h2>Savings Goals</h2>
