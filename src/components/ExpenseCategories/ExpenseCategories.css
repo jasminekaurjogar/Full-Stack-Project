@@ -1,8 +1,8 @@
 /* Styles that only apply to the ExpenseCategories component */
 
 .ExpenseCategories {
-  margin-top: 24px;
-  padding: 20px;
+  margin-top: 28px;
+  padding: 24px;
   border: 1px solid #d8e7ef;
   border-left: 7px solid #83b6c9;
   border-radius: 16px;
@@ -37,7 +37,7 @@
 
 /* Each category is shown as a card with a light blue border */
 .ExpenseCategories-card {
-  background-color: rgba(255, 255, 255, 0.32);
+  background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #d8e7ef;
   border-radius: 16px;
   padding: 16px;

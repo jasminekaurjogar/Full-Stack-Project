@@ -5,3 +5,7 @@ dist/
 
 Lab1.1/
 Lab1.2/
+
+# Instructor class demo — do not commit
+full-stack-demo/
+.vercel
