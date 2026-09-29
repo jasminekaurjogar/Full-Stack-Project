@@ -25,12 +25,31 @@ const savingsGoals: SavingsGoal[] = [
   },
 ];
 
-export function SavingsGoals() {
+interface SavingsGoalsProps {
+  savedThisMonth: number;
+  setSavedThisMonth: (value: number) => void;
+}
+
+export function SavingsGoals({
+  savedThisMonth,
+  setSavedThisMonth,
+}: SavingsGoalsProps) {
+  function addTenDollars() {
+    setSavedThisMonth(savedThisMonth + 10);
+  }
+
   return (
     <section className="savings-goals" id="goals">
       <p className="hero-label">Goals</p>
       <h2>Savings Goals</h2>
       <p>Set a target, add to it over time, and see how close you are.</p>
+
+      <p>
+        Shared saved this month: <strong>${savedThisMonth}</strong>
+      </p>
+      <button type="button" onClick={addTenDollars}>
+        Add $10 to shared savings
+      </button>
 
       <ul className="savings-goals-list">
         {savingsGoals.map((goal) => {
