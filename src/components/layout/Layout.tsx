@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Nav } from "./Nav";
+import { Footer } from "./Footer";
 
 export function Layout() {
   return (
@@ -21,13 +22,7 @@ export function Layout() {
       </header>
 
       <Outlet />
-
-      <footer>
-        <p>
-          <strong>Piggy Bank</strong> · A clearer way to manage your money
-        </p>
-        <p>© 2026 Piggy Bank. Plan spending. Grow savings.</p>
-      </footer>
+      <Footer />
     </>
   );
 }
