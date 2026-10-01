@@ -1,11 +1,10 @@
 .savings-goals {
   margin-top: 28px;
   padding: 28px;
-  border: 1px solid #d8e7ef;
+  border: 1px solid #e4ddd6;
   border-left: 7px solid #83b6c9;
   border-radius: 22px;
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(22px);
+  background-color: #f6f3ef;
 }
 
 .savings-goals h2 {
@@ -21,8 +20,8 @@
   margin-top: 20px;
   padding: 18px;
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.55);
-  border: 1px solid #d8e7ef;
+  background-color: #fffdf9;
+  border: 1px solid #e4ddd6;
 }
 
 .savings-summary h3 {
@@ -41,8 +40,8 @@
 }
 
 .savings-goals-card {
-  background-color: rgba(255, 255, 255, 0.62);
-  border: 1px solid #d8e7ef;
+  background-color: #fffdf9;
+  border: 1px solid #e4ddd6;
   border-radius: 18px;
   padding: 20px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -101,8 +100,8 @@
   margin-top: 20px;
   padding: 18px;
   border-radius: 16px;
-  background-color: rgba(246, 244, 244, 0.55);
-  border: 1px solid #d8e7ef;
+  background-color: #f7f4f0;
+  border: 1px solid #e4ddd6;
 }
 
 .savings-form h3 {
@@ -123,8 +122,9 @@
   max-width: 320px;
   margin-top: 6px;
   padding: 8px 10px;
-  border: 1px solid #d8e7ef;
+  border: 1px solid #e4ddd6;
   border-radius: 8px;
+  background-color: #fffdf9;
 }
 
 .savings-error {

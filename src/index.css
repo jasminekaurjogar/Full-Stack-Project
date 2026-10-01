@@ -60,11 +60,10 @@ main {
   max-width: 1080px;
   margin: 28px auto;
   padding: 28px;
-  background-color: rgba(255, 255, 255, 0.28);
+  background-color: #f6f3ef;
   border-radius: 24px;
-  border: 1px solid #d8e7ef;
+  border: 1px solid #e4ddd6;
   box-shadow: 0 10px 28px #a9bdca;
-  backdrop-filter: blur(22px);
 }
 
 main h2 {
