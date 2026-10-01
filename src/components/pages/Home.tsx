@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-export function Home() {
+interface HomeProps {
+  savedThisMonth: number;
+}
+
+export function Home({ savedThisMonth }: HomeProps) {
   return (
     <main>
       <section className="hero-section">
