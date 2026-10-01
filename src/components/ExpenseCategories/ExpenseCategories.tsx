@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import Button from "../Button/Button";
+import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
 import "./ExpenseCategories.css";
 
 // Interface to define the data structure for each expense category
@@ -70,6 +71,11 @@ function ExpenseCategories({
         You are tracking {categories.length} categories with a total monthly
         budget of ${totalBudget}.
       </p>
+
+      <AddCategoryForm
+        categories={categories}
+        setCategories={setCategories}
+      />
 
       {/* Loop through the array and build one list item for each category */}
       <ul className="ExpenseCategories-list">

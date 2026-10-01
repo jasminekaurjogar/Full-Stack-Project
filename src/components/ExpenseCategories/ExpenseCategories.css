@@ -75,3 +75,26 @@
 .ExpenseCategories-card button {
   margin-top: 8px;
 }
+
+.ExpenseCategories-form {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0;
+  max-width: 360px;
+}
+
+.ExpenseCategories-form input {
+  padding: 8px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+}
+
+.ExpenseCategories-preview {
+  font-weight: bold;
+  color: #3e6f89;
+}
+
+.ExpenseCategories-error {
+  color: #8b3a3a;
+  font-weight: bold;
+}
