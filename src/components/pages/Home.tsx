@@ -22,20 +22,11 @@ export function Home() {
         </div>
 
         <div className="hero-preview">
-          <p className="hero-label">This month</p>
-          <h3>Monthly overview</h3>
-          <div className="snapshot-row">
-            <span>Saved</span>
-            <strong>$325</strong>
-          </div>
-          <div className="snapshot-row">
-            <span>Spent</span>
-            <strong>$600</strong>
-          </div>
-          <div className="snapshot-row">
-            <span>Left to spend</span>
-            <strong>$200</strong>
-          </div>
+          <h3>Monthly Snapshot</h3>
+          <p>Saved this month</p>
+          <strong>${savedThisMonth}</strong>
+          <p>Top category</p>
+          <strong>Food</strong>
         </div>
       </section>
 
