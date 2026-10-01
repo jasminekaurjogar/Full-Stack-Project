@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_BsbuPBzxT3CY06GmzhvrTYJWiGxd",
+      "name": "full-stack-project",
+      "directory": ".",
+      "orgId": "team_pwp44fsNhCcXuM0Sv71TpLz5"
+    }
+  ]
+}

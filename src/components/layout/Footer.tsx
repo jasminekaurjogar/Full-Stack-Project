@@ -1,11 +1,10 @@
-// Footer stays the same on every page, so it lives in the Layout
-function Footer() {
+export function Footer() {
   return (
     <footer>
-      <p>Created by Sehajpreet Kaur and Jasmine Kaur</p>
-      <p>Track expenses, plan savings, and build better habits.</p>
+      <p>
+        <strong>Piggy Bank</strong> · A clearer way to manage your money
+      </p>
+      <p>© 2026 Piggy Bank. Plan spending. Grow savings.</p>
     </footer>
   );
 }
-
-export default Footer;

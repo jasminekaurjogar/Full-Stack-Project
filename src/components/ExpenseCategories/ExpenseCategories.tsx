@@ -70,8 +70,7 @@ function ExpenseCategories({
     <section className="ExpenseCategories" id="expenses">
       <h2>Expense Categories</h2>
       <p>
-        Track your student budget across different daily spending categories to
-        stay on top of your finances.
+        Organize monthly spending by category so your budget stays easy to follow.
       </p>
       <p className="ExpenseCategories-summary">
         You are tracking {categories.length} categories with a total monthly
