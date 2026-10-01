@@ -1,0 +1,9 @@
+/* Styles for the shared layout shell that wraps every page */
+
+/* NavLink adds this class to the link for the page being viewed, so the
+   user can tell where they are */
+.nav-link-active {
+  color: #3e6f89;
+  border-bottom: 3px solid #83b6c9;
+  padding-bottom: 2px;
+}

@@ -1,3 +1,4 @@
+import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import "./ExpenseCategories.css";
 
 // Interface to define the data structure for each expense category
