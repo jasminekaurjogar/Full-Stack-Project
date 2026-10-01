@@ -11,6 +11,7 @@ export interface ExpenseCategory {
   name: string;
   budget: number;
   description: string;
+  image: string;
 }
 
 // Starting list. useState copies this into state so the user can change it later.
@@ -20,24 +21,28 @@ const startingCategories: ExpenseCategory[] = [
       name: "Food",
       budget: 250,
       description: "Groceries, coffee, and eating out with friends.",
+      image: "/expenses/food.png",
     },
     {
       id: 2,
       name: "Transportation",
       budget: 100,
       description: "Bus passes, gas money, and rides to campus.",
+      image: "/expenses/transportation.png",
     },
     {
       id: 3,
       name: "School Supplies",
       budget: 150,
       description: "Textbooks, notebooks, and other class materials.",
+      image: "/expenses/school-supplies.png",
     },
     {
       id: 4,
       name: "Entertainment",
       budget: 75,
       description: "Movies, games, and weekend plans.",
+      image: "/expenses/entertainment.png",
     },
 ];
 
@@ -94,6 +99,11 @@ function ExpenseCategories({
       <ul className="ExpenseCategories-list">
         {categories.map((category) => (
           <li className="ExpenseCategories-card" key={category.id}>
+            <img
+              className="ExpenseCategories-icon"
+              src={category.image}
+              alt={category.name + " icon"}
+            />
             <h3>{category.name}</h3>
             <p className="ExpenseCategories-budget">${category.budget} / month</p>
             <p>{category.description}</p>

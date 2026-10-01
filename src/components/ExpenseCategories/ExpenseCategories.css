@@ -53,6 +53,14 @@
   transform: translateY(1px);
 }
 
+.ExpenseCategories-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  object-fit: contain;
+}
+
 .ExpenseCategories-card h3 {
   margin: 0;
   color: #3e6f89;

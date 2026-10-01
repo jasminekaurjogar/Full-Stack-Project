@@ -44,6 +44,7 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
       name: trimmedName,
       budget: budgetNumber,
       description: description.trim() || "No description yet.",
+      image: "/expenses/school-supplies.png",
     };
 
     setCategories([...categories, newCategory]);
