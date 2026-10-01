@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import "./ExpenseCategories.css";
 
@@ -9,13 +10,8 @@ export interface ExpenseCategory {
   description: string;
 }
 
-// ExpenseCategories component to organize student spending categories
-function ExpenseCategories({
-  savedThisMonth,
-  setSavedThisMonth,
-}: SavedThisMonthProps) {
-  // Array of the main expense categories a student spends money on
-  const categories: ExpenseCategory[] = [
+// Starting list. useState copies this into state so the user can change it later.
+const startingCategories: ExpenseCategory[] = [
     {
       id: 1,
       name: "Food",
@@ -40,7 +36,15 @@ function ExpenseCategories({
       budget: 75,
       description: "Movies, games, and weekend plans.",
     },
-  ];
+];
+
+// ExpenseCategories is the Feature Page for /expenses
+function ExpenseCategories({
+  savedThisMonth,
+  setSavedThisMonth,
+}: SavedThisMonthProps) {
+  // categories is the current list. setCategories will add or remove items next.
+  const [categories, setCategories] = useState(startingCategories);
 
   // Add up every category budget to show the total monthly spending plan
   let totalBudget = 0;
