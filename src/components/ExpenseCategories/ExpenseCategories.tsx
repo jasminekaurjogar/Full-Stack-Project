@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+import Button from "../Button/Button";
 import "./ExpenseCategories.css";
 
 // Interface to define the data structure for each expense category
@@ -43,8 +44,14 @@ function ExpenseCategories({
   savedThisMonth,
   setSavedThisMonth,
 }: SavedThisMonthProps) {
-  // categories is the current list. setCategories will add or remove items next.
+  // categories is the current list. setCategories updates the page right away.
   const [categories, setCategories] = useState(startingCategories);
+
+  // Keep every category except the one whose Remove button was clicked
+  function removeCategory(idToRemove: number) {
+    const remaining = categories.filter((category) => category.id !== idToRemove);
+    setCategories(remaining);
+  }
 
   // Add up every category budget to show the total monthly spending plan
   let totalBudget = 0;
@@ -71,6 +78,12 @@ function ExpenseCategories({
             <h3>{category.name}</h3>
             <p className="ExpenseCategories-budget">${category.budget} / month</p>
             <p>{category.description}</p>
+            <Button
+              variant="secondary"
+              onClick={() => removeCategory(category.id)}
+            >
+              Remove
+            </Button>
           </li>
         ))}
       </ul>

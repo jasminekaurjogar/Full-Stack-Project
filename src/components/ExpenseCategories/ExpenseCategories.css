@@ -71,3 +71,7 @@
   font-size: 16px;
   color: #435466;
 }
+
+.ExpenseCategories-card button {
+  margin-top: 8px;
+}
