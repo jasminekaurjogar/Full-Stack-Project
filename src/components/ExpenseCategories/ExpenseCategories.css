@@ -80,13 +80,33 @@
   display: grid;
   gap: 8px;
   margin: 20px 0;
-  max-width: 360px;
+  max-width: 420px;
+  padding: 16px;
+  border: 1px solid #d8e7ef;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ExpenseCategories-form h3 {
+  margin: 0;
+  color: #3e6f89;
+}
+
+.ExpenseCategories-form label {
+  font-weight: bold;
+  color: #435466;
 }
 
 .ExpenseCategories-form input {
   padding: 8px;
   border: 1px solid #d8e7ef;
   border-radius: 8px;
+  font-size: 16px;
+}
+
+.ExpenseCategories-form button {
+  justify-self: start;
+  margin-top: 4px;
 }
 
 .ExpenseCategories-preview {
@@ -95,6 +115,12 @@
 }
 
 .ExpenseCategories-error {
+  margin: 0;
   color: #8b3a3a;
   font-weight: bold;
+}
+
+.ExpenseCategories-empty {
+  font-weight: bold;
+  color: #657399;
 }

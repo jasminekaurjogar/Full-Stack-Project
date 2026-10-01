@@ -84,6 +84,12 @@ function ExpenseCategories({
         setCategories={setCategories}
       />
 
+      {categories.length === 0 && (
+        <p className="ExpenseCategories-empty">
+          No categories yet. Use the form above to add one.
+        </p>
+      )}
+
       {/* Loop through the array and build one list item for each category */}
       <ul className="ExpenseCategories-list">
         {categories.map((category) => (
