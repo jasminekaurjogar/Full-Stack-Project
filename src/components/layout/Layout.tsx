@@ -1,11 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import "./Layout.css";
+import { Nav } from "./Nav";
+import { Footer } from "./Footer";
 
-// Layout is rendered by the root route, so the header and footer stay on
-// screen while Outlet swaps in whichever page the user navigated to
-function Layout() {
+export function Layout() {
   return (
     <>
       <header>
@@ -17,20 +14,15 @@ function Layout() {
           />
           <div>
             <h1>Piggy Bank</h1>
-            <p>A personal finance tracker</p>
+            <p>Personal finance, clearly organized</p>
           </div>
         </div>
 
         <Nav />
       </header>
 
-      <main>
-        <Outlet />
-      </main>
-
+      <Outlet />
       <Footer />
     </>
   );
 }
-
-export default Layout;
