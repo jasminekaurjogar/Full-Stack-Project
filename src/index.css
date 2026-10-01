@@ -13,12 +13,12 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/soft-finance-background.png");
+  background-image: url("/finance-city-background.png");
   background-size: cover;
   background-position: center;
-  filter: blur(8px);
-  transform: scale(1.04);
-  opacity: 0.7;
+  filter: blur(2px);
+  transform: scale(1.02);
+  opacity: 0.9;
   z-index: -2;
 }
 

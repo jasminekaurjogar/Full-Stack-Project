@@ -57,7 +57,7 @@
   width: 56px;
   height: 56px;
   display: block;
-  background-color: #ffffff;
+  background-color: #faf7f7;
   border-radius: 14px;
   padding: 6px;
   border: 1px solid #d8e7ef;
@@ -95,4 +95,56 @@
 .savings-note {
   margin-top: 12px;
   font-size: 14px;
+}
+
+.savings-form {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 16px;
+  background-color: rgba(246, 244, 244, 0.55);
+  border: 1px solid #d8e7ef;
+}
+
+.savings-form h3 {
+  margin-top: 0;
+  color: #3e6f89;
+}
+
+.savings-form label {
+  display: block;
+  margin-bottom: 12px;
+  color: #435466;
+  font-weight: bold;
+}
+
+.savings-form input {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+}
+
+.savings-error {
+  color: #a33a3a;
+  font-weight: bold;
+}
+
+.savings-goals-card .secondary-button {
+  margin-top: 14px;
+}
+
+.savings-add-money {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.savings-add-money input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
 }
