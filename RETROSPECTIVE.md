@@ -122,3 +122,5 @@ pull request review and ask for a rewrite if a message is unclear.
 we both need to edit, we will decide at the start of Sprint 2 who owns it, and
 the other person will add their component to it only after the owner's changes
 are merged into `develop`.
+
+added something 

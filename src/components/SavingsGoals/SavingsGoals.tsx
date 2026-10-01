@@ -38,10 +38,8 @@ const startingGoals: SavingsGoal[] = [
   },
 ];
 
-interface SavingsGoalsProps {
-  savedThisMonth: number;
-  setSavedThisMonth: (value: number) => void;
-}
+import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
 
 export function SavingsGoals({
   savedThisMonth,
@@ -138,133 +136,18 @@ export function SavingsGoals({
     <section className="savings-goals" id="goals">
       <p className="hero-label">Goals</p>
       <h2>Savings Goals</h2>
-      <p>Set a target, add to it over time, and see how close you are.</p>
+      <p>These are some example goals that a user could track in Piggy Bank.</p>
+      <SavedThisMonthBox
+        savedThisMonth={savedThisMonth}
+        setSavedThisMonth={setSavedThisMonth}
+      />
 
-      <div className="savings-summary">
-        <div>
-          <p className="hero-label">This month</p>
-          <h3>${savedThisMonth}</h3>
-          <p>Shared amount saved across pages</p>
-        </div>
-        <div>
-          <p className="hero-label">All goals</p>
-          <h3>${totalSaved}</h3>
-          <p>
-            of ${totalTarget} total · {totalPercent}% complete
-          </p>
-        </div>
-        <button type="button" onClick={addTenDollars}>
-          Add $10 to shared savings
-        </button>
-      </div>
-
-      <form className="savings-form" onSubmit={handleAddGoal}>
-        <h3>Add a new goal</h3>
-        <label>
-          Goal name
-          <input
-            type="text"
-            value={goalName}
-            onChange={function (event) {
-              setGoalName(event.target.value);
-            }}
-          />
-        </label>
-        <label>
-          Target amount
-          <input
-            type="number"
-            min="1"
-            value={goalTarget}
-            onChange={function (event) {
-              setGoalTarget(event.target.value);
-            }}
-          />
-        </label>
-        <label>
-          Description
-          <input
-            type="text"
-            value={goalNote}
-            onChange={function (event) {
-              setGoalNote(event.target.value);
-            }}
-          />
-        </label>
-        {formError !== "" && <p className="savings-error">{formError}</p>}
-        <button type="submit">Add goal</button>
-      </form>
-
-      <ul className="savings-goals-list">
-        {goals.map((goal) => {
-          const percent = Math.min(
-            100,
-            Math.round((goal.saved / goal.target) * 100)
-          );
-          const left = Math.max(0, goal.target - goal.saved);
-          let status = "Just started";
-
-          if (percent >= 100) {
-            status = "Goal reached";
-          } else if (percent >= 60) {
-            status = "On track";
-          } else if (percent >= 30) {
-            status = "Keep going";
-          }
-
-          return (
-            <li className="savings-goals-card" key={goal.id}>
-              {goal.image && (
-                <img
-                  className="savings-icon"
-                  src={goal.image}
-                  alt={goal.name + " icon"}
-                />
-              )}
-              <h3>{goal.name}</h3>
-              <p className="savings-status">{status}</p>
-              <p className="savings-goals-amount">${goal.saved} saved</p>
-              <p>Target ${goal.target}</p>
-              <p>${left} left to save</p>
-              <div className="progress-bar">
-                <span style={{ width: percent + "%" }}></span>
-              </div>
-              <p>{percent}% complete</p>
-              <p className="savings-note">{goal.note}</p>
-              <div className="savings-add-money">
-                <input
-                  type="number"
-                  min="1"
-                  placeholder="Amount"
-                  value={addAmounts[goal.id] || ""}
-                  onChange={function (event) {
-                    setAddAmounts({
-                      ...addAmounts,
-                      [goal.id]: event.target.value,
-                    });
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={function () {
-                    handleAddMoney(goal.id);
-                  }}
-                >
-                  Add money
-                </button>
-              </div>
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={function () {
-                  handleRemoveGoal(goal.id);
-                }}
-              >
-                Remove
-              </button>
-            </li>
-          );
-        })}
+      <ul>
+        {savingsGoals.map((goal) => (
+          <li key={goal.name}>
+            <strong>{goal.name}</strong>: {goal.amount}
+          </li>
+        ))}
       </ul>
     </section>
   );
