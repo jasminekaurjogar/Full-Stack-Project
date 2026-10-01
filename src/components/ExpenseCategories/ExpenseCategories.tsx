@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
+import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
 import "./ExpenseCategories.css";
 
 // Interface to define the data structure for each expense category
@@ -69,8 +70,14 @@ function ExpenseCategories({
       </p>
       <p className="ExpenseCategories-summary">
         You are tracking {categories.length} categories with a total monthly
-        budget of ${totalBudget}.
+        budget of ${totalBudget}. After expenses, ${savedThisMonth} is still
+        marked as saved this month.
       </p>
+
+      <SavedThisMonthBox
+        savedThisMonth={savedThisMonth}
+        setSavedThisMonth={setSavedThisMonth}
+      />
 
       <AddCategoryForm
         categories={categories}

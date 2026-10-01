@@ -14,6 +14,7 @@ const savingsGoals = [
 ];
 
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
 
 export function SavingsGoals({
   savedThisMonth,
@@ -23,6 +24,10 @@ export function SavingsGoals({
     <section className="savings-goals" id="goals">
       <h2>Savings Goals</h2>
       <p>These are some example goals that a user could track in Piggy Bank.</p>
+      <SavedThisMonthBox
+        savedThisMonth={savedThisMonth}
+        setSavedThisMonth={setSavedThisMonth}
+      />
 
       <ul>
         {savingsGoals.map((goal) => (

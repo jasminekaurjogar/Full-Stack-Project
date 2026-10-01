@@ -21,7 +21,7 @@ function Home({ savedThisMonth, setSavedThisMonth }: SavedThisMonthProps) {
         <div className="hero-preview">
           <h3>Monthly Snapshot</h3>
           <p>Saved this month</p>
-          <strong>$325</strong>
+          <strong>${savedThisMonth}</strong>
           <p>Top category</p>
           <strong>Food</strong>
         </div>

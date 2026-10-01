@@ -1,0 +1,21 @@
+.saved-this-month-box {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border: 1px solid #d8e7ef;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.saved-this-month-box p {
+  margin: 0 0 8px;
+  color: #3e6f89;
+  font-weight: bold;
+}
+
+.saved-this-month-box input {
+  display: block;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+}
