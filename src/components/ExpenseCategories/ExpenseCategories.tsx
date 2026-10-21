@@ -1,18 +1,10 @@
 import { useState } from "react";
+import type { ExpenseCategory } from "../../types/ExpenseCategory";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
 import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
 import "./ExpenseCategories.css";
-
-// Interface to define the data structure for each expense category
-export interface ExpenseCategory {
-  id: number;
-  name: string;
-  budget: number;
-  description: string;
-  image: string;
-}
 
 // Starting list. useState copies this into state so the user can change it later.
 const startingCategories: ExpenseCategory[] = [

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Dispatch, FormEvent, SetStateAction } from "react";
-import type { ExpenseCategory } from "../ExpenseCategories/ExpenseCategories";
+import type { ExpenseCategory } from "../../types/ExpenseCategory";
 import Button from "../Button/Button";
 
 type AddCategoryFormProps = {
