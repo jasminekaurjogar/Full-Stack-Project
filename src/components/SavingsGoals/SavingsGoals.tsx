@@ -1,42 +1,7 @@
 import { useState } from "react";
+import type { SavingsGoal } from "../../types/SavingsGoal";
+import { savingsGoalTestData } from "../../data/savingsGoalTestData";
 import "./SavingsGoals.css";
-
-// Simple type for one savings goal
-interface SavingsGoal {
-  id: number;
-  name: string;
-  target: number;
-  saved: number;
-  image: string;
-  note: string;
-}
-
-const startingGoals: SavingsGoal[] = [
-  {
-    id: 1,
-    name: "Emergency Fund",
-    target: 500,
-    saved: 325,
-    image: "/savings/emergency-fund.png",
-    note: "Keep a safety amount for surprise bills.",
-  },
-  {
-    id: 2,
-    name: "Gaming Laptop Setup",
-    target: 5000,
-    saved: 900,
-    image: "/savings/gaming-setup.png",
-    note: "Save a little each month for a gaming setup.",
-  },
-  {
-    id: 3,
-    name: "Travel Fund",
-    target: 1200,
-    saved: 480,
-    image: "/savings/travel.png",
-    note: "Plan a trip without using credit cards.",
-  },
-];
 
 interface SavingsGoalsProps {
   savedThisMonth: number;
@@ -47,7 +12,7 @@ export function SavingsGoals({
   savedThisMonth,
   setSavedThisMonth,
 }: SavingsGoalsProps) {
-  const [goals, setGoals] = useState(startingGoals);
+  const [goals, setGoals] = useState(savingsGoalTestData);
   const [goalName, setGoalName] = useState("");
   const [goalTarget, setGoalTarget] = useState("");
   const [goalNote, setGoalNote] = useState("");
