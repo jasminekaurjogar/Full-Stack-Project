@@ -56,40 +56,50 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
 
   return (
     <form className="ExpenseCategories-form" onSubmit={handleSubmit}>
-      <h3>Add a category</h3>
-      <p className="ExpenseCategories-preview">
-        Preview: {name.trim() || "New category"} — $
-        {budget === "" ? "0" : budget} / month
-      </p>
+      <div className="ExpenseCategories-formTop">
+        <h3>Add a row</h3>
+        <p className="ExpenseCategories-preview">
+          {name.trim() || "New category"} · $
+          {budget === "" ? "0" : budget}
+        </p>
+      </div>
 
-      <label htmlFor="category-name">Name</label>
-      <input
-        id="category-name"
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
+      <div className="ExpenseCategories-fields">
+        <div>
+          <label htmlFor="category-name">Name</label>
+          <input
+            id="category-name"
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
 
-      <label htmlFor="category-budget">Monthly budget</label>
-      <input
-        id="category-budget"
-        type="number"
-        min="1"
-        value={budget}
-        onChange={(event) => setBudget(event.target.value)}
-      />
+        <div>
+          <label htmlFor="category-budget">Budget</label>
+          <input
+            id="category-budget"
+            type="number"
+            min="1"
+            value={budget}
+            onChange={(event) => setBudget(event.target.value)}
+          />
+        </div>
 
-      <label htmlFor="category-description">Description</label>
-      <input
-        id="category-description"
-        type="text"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
+        <div>
+          <label htmlFor="category-description">What it covers</label>
+          <input
+            id="category-description"
+            type="text"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </div>
+
+        <Button type="submit">Add row</Button>
+      </div>
 
       {error !== "" && <p className="ExpenseCategories-error">{error}</p>}
-
-      <Button type="submit">Add Category</Button>
     </form>
   );
 }
