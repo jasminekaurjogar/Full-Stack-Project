@@ -148,3 +148,29 @@
   border: 1px solid #d8e7ef;
   border-radius: 8px;
 }
+
+.savings-edit input {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #e4ddd6;
+  border-radius: 8px;
+  font-weight: bold;
+
+}
+
+.savings-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.savings-complete-button {
+  font-weight: normal;
+}
+
+.savings-complete-button-done {
+  font-weight: bold;
+}

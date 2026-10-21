@@ -12,12 +12,17 @@ export function SavingsGoals({
   savedThisMonth,
   setSavedThisMonth,
 }: SavingsGoalsProps) {
-  const [goals, setGoals] = useState(savingsGoalTestData);
+  // I.2 keeps 10 goals in the test file. The page starts with the first 3.
+  const [goals, setGoals] = useState(savingsGoalTestData.slice(0, 3));
   const [goalName, setGoalName] = useState("");
   const [goalTarget, setGoalTarget] = useState("");
   const [goalNote, setGoalNote] = useState("");
   const [addAmounts, setAddAmounts] = useState<Record<number, string>>({});
   const [formError, setFormError] = useState("");
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editTarget, setEditTarget] = useState("");
+  const [editNote, setEditNote] = useState("");
 
   function addTenDollars() {
     setSavedThisMonth(savedThisMonth + 10);
@@ -84,6 +89,47 @@ export function SavingsGoals({
     setGoals(updatedGoals);
     setSavedThisMonth(savedThisMonth + amount);
     setAddAmounts({ ...addAmounts, [id]: "" });
+  }
+
+  function startEditGoal(goal: SavingsGoal) {
+    setEditingId(goal.id);
+    setEditName(goal.name);
+    setEditTarget(String(goal.target));
+    setEditNote(goal.note);
+  }
+
+  function handleSaveEdit(id: number) {
+    const targetNumber = Number(editTarget);
+
+    if (editName.trim() === "" || Number.isNaN(targetNumber) || targetNumber <= 0) {
+      return;
+    }
+
+    const updatedGoals = goals.map(function (goal) {
+      if (goal.id === id) {
+        return {
+          ...goal,
+          name: editName.trim(),
+          target: targetNumber,
+          note: editNote.trim(),
+        };
+      }
+      return goal;
+    });
+
+    setGoals(updatedGoals);
+    setEditingId(null);
+  }
+
+  function handleCompleteGoal(id: number) {
+    const updatedGoals = goals.map(function (goal) {
+      if (goal.id === id) {
+        return { ...goal, saved: goal.target };
+      }
+      return goal;
+    });
+
+    setGoals(updatedGoals);
   }
 
   let totalSaved = 0;
@@ -186,11 +232,57 @@ export function SavingsGoals({
                   alt={goal.name + " icon"}
                 />
               )}
-              <h3>{goal.name}</h3>
-              <p className="savings-status">{status}</p>
-              <p className="savings-goals-amount">${goal.saved} saved</p>
-              <p>Target ${goal.target}</p>
-              <p>${left} left to save</p>
+              {editingId === goal.id ? (
+                <div className="savings-edit">
+                  <input
+                    type="text"
+                    value={editName}
+                    onChange={function (event) {
+                      setEditName(event.target.value);
+                    }}
+                  />
+                  <input
+                    type="number"
+                    min="1"
+                    value={editTarget}
+                    onChange={function (event) {
+                      setEditTarget(event.target.value);
+                    }}
+                  />
+                  <input
+                    type="text"
+                    value={editNote}
+                    onChange={function (event) {
+                      setEditNote(event.target.value);
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={function () {
+                      handleSaveEdit(goal.id);
+                    }}
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="secondary-button"
+                    onClick={function () {
+                      setEditingId(null);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <h3>{goal.name}</h3>
+                  <p className="savings-status">{status}</p>
+                  <p className="savings-goals-amount">${goal.saved} saved</p>
+                  <p>Target ${goal.target}</p>
+                  <p>${left} left to save</p>
+                </>
+              )}
               <div className="progress-bar">
                 <span style={{ width: percent + "%" }}></span>
               </div>
@@ -218,15 +310,39 @@ export function SavingsGoals({
                   Add money
                 </button>
               </div>
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={function () {
-                  handleRemoveGoal(goal.id);
-                }}
-              >
-                Remove
-              </button>
+              <div className="savings-card-actions">
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={function () {
+                    startEditGoal(goal);
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  className={
+                    percent >= 100
+                      ? "secondary-button savings-complete-button savings-complete-button-done"
+                      : "secondary-button savings-complete-button"
+                  }
+                  onClick={function () {
+                    handleCompleteGoal(goal.id);
+                  }}
+                >
+                  Complete
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={function () {
+                    handleRemoveGoal(goal.id);
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
             </li>
           );
         })}
