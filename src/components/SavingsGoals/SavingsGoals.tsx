@@ -1,6 +1,5 @@
-import { useState } from "react";
 import type { SavingsGoal } from "../../types/SavingsGoal";
-import { savingsGoalTestData } from "../../data/savingsGoalTestData";
+import { useSavingsGoals } from "../../hooks/useSavingsGoals";
 import "./SavingsGoals.css";
 
 interface SavingsGoalsProps {
@@ -8,141 +7,49 @@ interface SavingsGoalsProps {
   setSavedThisMonth: (value: number) => void;
 }
 
+// This page is presentation only. It uses useSavingsGoals for state.
+// The hook calls the service. The service calls the repository.
 export function SavingsGoals({
   savedThisMonth,
   setSavedThisMonth,
 }: SavingsGoalsProps) {
-  // I.2 keeps 10 goals in the test file. The page starts with the first 3.
-  const [goals, setGoals] = useState(savingsGoalTestData.slice(0, 3));
-  const [goalName, setGoalName] = useState("");
-  const [goalTarget, setGoalTarget] = useState("");
-  const [goalNote, setGoalNote] = useState("");
-  const [addAmounts, setAddAmounts] = useState<Record<number, string>>({});
-  const [formError, setFormError] = useState("");
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editName, setEditName] = useState("");
-  const [editTarget, setEditTarget] = useState("");
-  const [editNote, setEditNote] = useState("");
+  const {
+    goals,
+    goalName,
+    setGoalName,
+    goalTarget,
+    setGoalTarget,
+    goalNote,
+    setGoalNote,
+    addAmounts,
+    setAddAmounts,
+    formError,
+    editingId,
+    setEditingId,
+    editName,
+    setEditName,
+    editTarget,
+    setEditTarget,
+    editNote,
+    setEditNote,
+    handleAddGoal,
+    handleRemoveGoal,
+    handleAddMoney,
+    startEditGoal,
+    handleSaveEdit,
+    handleCompleteGoal,
+    totals,
+  } = useSavingsGoals();
 
   function addTenDollars() {
     setSavedThisMonth(savedThisMonth + 10);
   }
 
-  function handleAddGoal(event: React.FormEvent) {
-    event.preventDefault();
-
-    const targetNumber = Number(goalTarget);
-
-    if (goalName.trim() === "") {
-      setFormError("Please enter a goal name.");
-      return;
+  function onAddMoney(id: number) {
+    const added = handleAddMoney(id);
+    if (added && added > 0) {
+      setSavedThisMonth(savedThisMonth + added);
     }
-
-    if (Number.isNaN(targetNumber) || targetNumber <= 0) {
-      setFormError("Please enter a target greater than 0.");
-      return;
-    }
-
-    if (goalNote.trim() === "") {
-      setFormError("Please enter a short description.");
-      return;
-    }
-
-    const newGoal: SavingsGoal = {
-      id: Date.now(),
-      name: goalName.trim(),
-      target: targetNumber,
-      saved: 0,
-      image: "/savings/new-goal.png",
-      note: goalNote.trim(),
-    };
-
-    setGoals([...goals, newGoal]);
-    setGoalName("");
-    setGoalTarget("");
-    setGoalNote("");
-    setFormError("");
-  }
-
-  function handleRemoveGoal(id: number) {
-    const updatedGoals = goals.filter(function (goal) {
-      return goal.id !== id;
-    });
-
-    setGoals(updatedGoals);
-  }
-
-  function handleAddMoney(id: number) {
-    const amount = Number(addAmounts[id]);
-
-    if (Number.isNaN(amount) || amount <= 0) {
-      return;
-    }
-
-    const updatedGoals = goals.map(function (goal) {
-      if (goal.id === id) {
-        return { ...goal, saved: goal.saved + amount };
-      }
-      return goal;
-    });
-
-    setGoals(updatedGoals);
-    setSavedThisMonth(savedThisMonth + amount);
-    setAddAmounts({ ...addAmounts, [id]: "" });
-  }
-
-  function startEditGoal(goal: SavingsGoal) {
-    setEditingId(goal.id);
-    setEditName(goal.name);
-    setEditTarget(String(goal.target));
-    setEditNote(goal.note);
-  }
-
-  function handleSaveEdit(id: number) {
-    const targetNumber = Number(editTarget);
-
-    if (editName.trim() === "" || Number.isNaN(targetNumber) || targetNumber <= 0) {
-      return;
-    }
-
-    const updatedGoals = goals.map(function (goal) {
-      if (goal.id === id) {
-        return {
-          ...goal,
-          name: editName.trim(),
-          target: targetNumber,
-          note: editNote.trim(),
-        };
-      }
-      return goal;
-    });
-
-    setGoals(updatedGoals);
-    setEditingId(null);
-  }
-
-  function handleCompleteGoal(id: number) {
-    const updatedGoals = goals.map(function (goal) {
-      if (goal.id === id) {
-        return { ...goal, saved: goal.target };
-      }
-      return goal;
-    });
-
-    setGoals(updatedGoals);
-  }
-
-  let totalSaved = 0;
-  let totalTarget = 0;
-
-  for (let i = 0; i < goals.length; i++) {
-    totalSaved = totalSaved + goals[i].saved;
-    totalTarget = totalTarget + goals[i].target;
-  }
-
-  let totalPercent = 0;
-  if (totalTarget > 0) {
-    totalPercent = Math.round((totalSaved / totalTarget) * 100);
   }
 
   return (
@@ -159,9 +66,9 @@ export function SavingsGoals({
         </div>
         <div>
           <p className="hero-label">All goals</p>
-          <h3>${totalSaved}</h3>
+          <h3>${totals.totalSaved}</h3>
           <p>
-            of ${totalTarget} total · {totalPercent}% complete
+            of ${totals.totalTarget} total · {totals.totalPercent}% complete
           </p>
         </div>
         <button type="button" onClick={addTenDollars}>
@@ -304,7 +211,7 @@ export function SavingsGoals({
                 <button
                   type="button"
                   onClick={function () {
-                    handleAddMoney(goal.id);
+                    onAddMoney(goal.id);
                   }}
                 >
                   Add money

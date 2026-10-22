@@ -161,6 +161,7 @@ export function useSavingsGoals() {
     setAddAmounts,
     formError,
     editingId,
+    setEditingId,
     editName,
     setEditName,
     editTarget,
