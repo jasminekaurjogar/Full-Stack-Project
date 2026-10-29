@@ -1,7 +1,11 @@
 import { useState } from "react";
 import type { ExpenseCategory } from "../../types/ExpenseCategory";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
-import { getShareOfPlan, getTotalBudget } from "../../services/expenseCategoryService";
+import {
+  checkCategoryFields,
+  getShareOfPlan,
+  getTotalBudget,
+} from "../../services/expenseCategoryService";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
 import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
@@ -77,29 +81,19 @@ function ExpenseCategories({
     setEditError("");
   }
 
-  // Save the name, budget, and description for the row that is open
+  // Save the name, budget, and description for the row that is open.
+  // The service checks the fields. This function only updates the list on the page.
   function saveEdit(idToUpdate: number) {
-    const trimmedName = editName.trim();
     const budgetNumber = Number(editBudget);
+    const errorMessage = checkCategoryFields(
+      editName,
+      budgetNumber,
+      categories,
+      idToUpdate,
+    );
 
-    if (trimmedName === "") {
-      setEditError("Please enter a category name.");
-      return;
-    }
-
-    const nameAlreadyUsed = categories.some((category) => {
-      return (
-        category.id !== idToUpdate &&
-        category.name.toLowerCase() === trimmedName.toLowerCase()
-      );
-    });
-    if (nameAlreadyUsed) {
-      setEditError("That category is already on the list.");
-      return;
-    }
-
-    if (Number.isNaN(budgetNumber) || budgetNumber <= 0) {
-      setEditError("Please enter a budget greater than 0.");
+    if (errorMessage !== "") {
+      setEditError(errorMessage);
       return;
     }
 
@@ -109,7 +103,7 @@ function ExpenseCategories({
       }
       return {
         ...category,
-        name: trimmedName,
+        name: editName.trim(),
         budget: budgetNumber,
         description: editDescription.trim() || "No description yet.",
       };
