@@ -1,5 +1,11 @@
 import type { ExpenseCategory } from "../types/ExpenseCategory";
-import { getAllCategories, getCategoryById } from "../apis/expenseCategoryRepo";
+import {
+  createCategory,
+  deleteCategory,
+  getAllCategories,
+  getCategoryById,
+  updateCategory,
+} from "../apis/expenseCategoryRepo";
 
 // Business rules for expense categories.
 // This file does not draw the page and it does not store the list itself.
@@ -67,4 +73,63 @@ export function getShareOfPlan(budget: number, totalBudget: number): number {
   }
 
   return Math.round((budget / totalBudget) * 100);
+}
+
+// Add a category only after the name and budget pass the checks.
+// Returns an error message, or "" when the repository saved the row.
+export function addCategory(
+  name: string,
+  budgetText: string,
+  description: string,
+): string {
+  const budget = Number(budgetText);
+  const error = checkCategoryFields(name, budget, getAllCategories());
+
+  if (error !== "") {
+    return error;
+  }
+
+  const trimmedDescription = description.trim();
+  createCategory(
+    name.trim(),
+    budget,
+    trimmedDescription === "" ? "No description yet." : trimmedDescription,
+    "/expenses/school-supplies.png",
+  );
+
+  return "";
+}
+
+// Update one category. ignoreId lets that row keep its current name.
+export function saveCategory(
+  id: number,
+  name: string,
+  budgetText: string,
+  description: string,
+): string {
+  const budget = Number(budgetText);
+  const error = checkCategoryFields(name, budget, getAllCategories(), id);
+
+  if (error !== "") {
+    return error;
+  }
+
+  const existing = getCategoryById(id);
+  if (!existing) {
+    return "That category is not on the list.";
+  }
+
+  const trimmedDescription = description.trim();
+  updateCategory(id, {
+    name: name.trim(),
+    budget: budget,
+    description: trimmedDescription === "" ? "No description yet." : trimmedDescription,
+  });
+
+  return "";
+}
+
+// Remove one category through the repository.
+export function removeCategory(id: number): boolean {
+  return deleteCategory(id);
 }
