@@ -1,14 +1,14 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { useExpenseCategories } from "../../hooks/useExpenseCategories";
 import Button from "../Button/Button";
 
-type AddCategoryFormProps = {
-  onAdd: (name: string, budget: string, description: string) => string;
-};
-
-// The form only collects what the user typed. onAdd comes from the hook,
-// and the hook asks the service to save the new category.
-function AddCategoryForm({ onAdd }: AddCategoryFormProps) {
+// AddCategoryForm is the second component that calls useExpenseCategories.
+// The expense page calls the same hook for the table. This form only uses
+// addNewCategory. The hook asks the service to check the fields and save the row.
+// The form keeps the typed text and shows the error message.
+function AddCategoryForm() {
+  const { addNewCategory } = useExpenseCategories();
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [description, setDescription] = useState("");
@@ -17,7 +17,7 @@ function AddCategoryForm({ onAdd }: AddCategoryFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const errorMessage = onAdd(name, budget, description);
+    const errorMessage = addNewCategory(name, budget, description);
 
     if (errorMessage !== "") {
       setError(errorMessage);

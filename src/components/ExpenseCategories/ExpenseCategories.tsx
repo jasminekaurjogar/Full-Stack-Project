@@ -7,8 +7,9 @@ import "./ExpenseCategories.css";
 
 // ExpenseCategories is the feature page for /expenses.
 // It calls useExpenseCategories for the rows, the edit boxes, and the buttons.
-// The hook asks the expense service to add, save, and remove. The service checks
+// The hook asks the expense service to save and remove. The service checks
 // the rules, then calls the repository, which reads the test data.
+// AddCategoryForm calls this same hook when the user adds a row.
 // This component only decides what to show on the screen.
 function ExpenseCategories({
   savedThisMonth,
@@ -29,7 +30,6 @@ function ExpenseCategories({
     startEdit,
     cancelEdit,
     saveEdit,
-    addNewCategory,
     deleteCategory,
   } = useExpenseCategories();
 
@@ -58,7 +58,7 @@ function ExpenseCategories({
         </div>
       </div>
 
-      <AddCategoryForm onAdd={addNewCategory} />
+      <AddCategoryForm />
 
       <div className="ExpenseCategories-tableWrap">
         <table className="ExpenseCategories-table">
