@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home savedThisMonth={savedThisMonth} />} />
+        <Route index element={<Home />} />
         <Route
           path="goals"
           element={
@@ -22,10 +22,7 @@ function App() {
           path="expenses"
           element={
             <main>
-              <ExpenseCategories
-                savedThisMonth={savedThisMonth}
-                setSavedThisMonth={setSavedThisMonth}
-              />
+              <ExpenseCategories />
             </main>
           }
         />
