@@ -1,18 +1,12 @@
 import type { SavingsGoal } from "../../types/SavingsGoal";
 import { useSavingsGoals } from "../../hooks/useSavingsGoals";
+import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
 import "./SavingsGoals.css";
 
-interface SavingsGoalsProps {
-  savedThisMonth: number;
-  setSavedThisMonth: (value: number) => void;
-}
-
-// This page is presentation only. It uses useSavingsGoals for state.
-// The hook calls the service. The service calls the repository.
-export function SavingsGoals({
-  savedThisMonth,
-  setSavedThisMonth,
-}: SavingsGoalsProps) {
+// This page is presentation only. It uses hooks for state.
+// The hooks call the service. The service calls the repository.
+export function SavingsGoals() {
+  const { savedThisMonth, addTenDollars, addAmount } = useSavedThisMonth();
   const {
     goals,
     goalName,
@@ -41,14 +35,10 @@ export function SavingsGoals({
     totals,
   } = useSavingsGoals();
 
-  function addTenDollars() {
-    setSavedThisMonth(savedThisMonth + 10);
-  }
-
   function onAddMoney(id: number) {
     const added = handleAddMoney(id);
     if (added && added > 0) {
-      setSavedThisMonth(savedThisMonth + added);
+      addAmount(added);
     }
   }
 
