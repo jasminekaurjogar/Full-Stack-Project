@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Dispatch, FormEvent, SetStateAction } from "react";
 import type { ExpenseCategory } from "../../types/ExpenseCategory";
+import { checkCategoryFields } from "../../services/expenseCategoryService";
 import Button from "../Button/Button";
 
 type AddCategoryFormProps = {
@@ -18,30 +19,18 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const trimmedName = name.trim();
     const budgetNumber = Number(budget);
+    // The service owns the name and budget rules. The form only shows the message.
+    const errorMessage = checkCategoryFields(name, budgetNumber, categories);
 
-    if (trimmedName === "") {
-      setError("Please enter a category name.");
-      return;
-    }
-
-    const nameAlreadyUsed = categories.some(
-      (category) => category.name.toLowerCase() === trimmedName.toLowerCase(),
-    );
-    if (nameAlreadyUsed) {
-      setError("That category is already on the list.");
-      return;
-    }
-
-    if (Number.isNaN(budgetNumber) || budgetNumber <= 0) {
-      setError("Please enter a budget greater than 0.");
+    if (errorMessage !== "") {
+      setError(errorMessage);
       return;
     }
 
     const newCategory: ExpenseCategory = {
       id: Date.now(),
-      name: trimmedName,
+      name: name.trim(),
       budget: budgetNumber,
       description: description.trim() || "No description yet.",
       image: "/expenses/school-supplies.png",
