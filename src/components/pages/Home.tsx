@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
+import { SavingsTotals } from "../SavingsGoals/SavingsTotals";
 
 export function Home() {
   const { savedThisMonth } = useSavedThisMonth();
@@ -31,6 +32,7 @@ export function Home() {
             <span>Saved</span>
             <strong>${savedThisMonth}</strong>
           </div>
+          <SavingsTotals />
           <div className="snapshot-row">
             <span>Spent</span>
             <strong>$600</strong>
