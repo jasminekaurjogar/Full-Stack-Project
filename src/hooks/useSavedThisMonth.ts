@@ -8,6 +8,7 @@ import * as savedThisMonthService from "../services/savedThisMonthService";
 // savedThisMonth - the shared amount shown on the page
 // addTenDollars - add 10 to the shared amount
 // addAmount - add another amount to the shared amount
+// updateSavedAmount - set the shared amount from the expenses box
 
 export function useSavedThisMonth() {
   const [savedThisMonth, setSavedThisMonth] = useState(0);
@@ -26,9 +27,15 @@ export function useSavedThisMonth() {
     setSavedThisMonth(newAmount);
   }
 
+  function updateSavedAmount(newAmount: number) {
+    const nextAmount = savedThisMonthService.setAmount(newAmount);
+    setSavedThisMonth(nextAmount);
+  }
+
   return {
     savedThisMonth,
     addTenDollars,
     addAmount,
+    updateSavedAmount,
   };
 }
