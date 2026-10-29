@@ -35,35 +35,36 @@
   margin: 24px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .savings-goals-card {
   background-color: #fffdf9;
   border: 1px solid #e4ddd6;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 20px;
+  box-shadow: 0 4px 14px #d5e0e6;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .savings-goals-card:hover {
-  box-shadow: 0 10px 22px #9bb4c4;
-  transform: translateY(-4px);
+  box-shadow: 0 10px 22px #b8cbd6;
+  transform: translateY(-3px);
 }
 
 .savings-icon {
   width: 56px;
   height: 56px;
   display: block;
-  background-color: #faf7f7;
+  background-color: #ffffff;
   border-radius: 14px;
   padding: 6px;
-  border: 1px solid #d8e7ef;
+  border: 1px solid #e4ddd6;
 }
 
 .savings-goals-card h3 {
-  margin: 8px 0 4px;
+  margin: 10px 0 6px;
   color: #3e6f89;
   font-size: 20px;
 }
@@ -133,7 +134,7 @@
 }
 
 .savings-goals-card .secondary-button {
-  margin-top: 14px;
+  margin-top: 0;
 }
 
 .savings-add-money {
@@ -144,7 +145,34 @@
 
 .savings-add-money input {
   width: 100%;
+  max-width: 160px;
   padding: 8px 10px;
   border: 1px solid #d8e7ef;
   border-radius: 8px;
+}
+
+.savings-edit input {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #e4ddd6;
+  border-radius: 8px;
+  font-weight: bold;
+
+}
+
+.savings-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.savings-complete-button {
+  font-weight: normal;
+}
+
+.savings-complete-button-done {
+  font-weight: bold;
 }

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
+import { SavingsTotals } from "../SavingsGoals/SavingsTotals";
 
-interface HomeProps {
-  savedThisMonth: number;
-}
+// Home reads the shared savings amount through useSavedThisMonth.
+// The hook asks the service, and the service reads the repository.
+export function Home() {
+  const { savedThisMonth } = useSavedThisMonth();
 
-export function Home({ savedThisMonth }: HomeProps) {
   return (
     <main>
       <section className="hero-section">
@@ -26,11 +28,21 @@ export function Home({ savedThisMonth }: HomeProps) {
         </div>
 
         <div className="hero-preview">
-          <h3>Monthly Snapshot</h3>
-          <p>Saved this month</p>
-          <strong>${savedThisMonth}</strong>
-          <p>Top category</p>
-          <strong>Food</strong>
+          <p className="hero-label">This month</p>
+          <h3>Monthly overview</h3>
+          <div className="snapshot-row">
+            <span>Saved</span>
+            <strong>${savedThisMonth}</strong>
+          </div>
+          <SavingsTotals />
+          <div className="snapshot-row">
+            <span>Spent</span>
+            <strong>$600</strong>
+          </div>
+          <div className="snapshot-row">
+            <span>Left to spend</span>
+            <strong>$200</strong>
+          </div>
         </div>
       </section>
 

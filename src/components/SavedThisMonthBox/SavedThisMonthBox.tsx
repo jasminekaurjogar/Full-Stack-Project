@@ -1,19 +1,16 @@
 import type { ChangeEvent } from "react";
-import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
 import "./SavedThisMonthBox.css";
 
-// Reusable box: shows the shared savings number and lets any page change it
-function SavedThisMonthBox({
-  savedThisMonth,
-  setSavedThisMonth,
-}: SavedThisMonthProps) {
+// SavedThisMonthBox calls useSavedThisMonth so a page can show and change
+// the shared amount without props from App.
+// The hook asks the service to check the number, then the repository stores it.
+function SavedThisMonthBox() {
+  const { savedThisMonth, updateSavedAmount } = useSavedThisMonth();
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const nextValue = Number(event.target.value);
-
-    // Only update shared state when the input is a valid number
-    if (!Number.isNaN(nextValue) && nextValue >= 0) {
-      setSavedThisMonth(nextValue);
-    }
+    updateSavedAmount(nextValue);
   }
 
   return (
