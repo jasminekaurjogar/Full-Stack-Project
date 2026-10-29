@@ -47,3 +47,24 @@ export function checkCategoryFields(
 
   return "";
 }
+
+// Add every budget together. The page uses this for "Planned this month".
+export function getTotalBudget(categories: ExpenseCategory[]): number {
+  let total = 0;
+
+  for (let i = 0; i < categories.length; i++) {
+    total = total + categories[i].budget;
+  }
+
+  return total;
+}
+
+// What percent of the whole plan one budget is.
+// Returns 0 when the plan total is 0 so we do not divide by zero.
+export function getShareOfPlan(budget: number, totalBudget: number): number {
+  if (totalBudget <= 0) {
+    return 0;
+  }
+
+  return Math.round((budget / totalBudget) * 100);
+}
