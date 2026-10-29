@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ExpenseCategory } from "../../types/ExpenseCategory";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
+import { getShareOfPlan, getTotalBudget } from "../../services/expenseCategoryService";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
 import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
@@ -119,11 +120,8 @@ function ExpenseCategories({
     setEditError("");
   }
 
-  // Add up every category budget to show the total monthly spending plan
-  let totalBudget = 0;
-  for (const category of categories) {
-    totalBudget = totalBudget + category.budget;
-  }
+  // The service adds the budgets and figures each row's share of the plan.
+  const totalBudget = getTotalBudget(categories);
 
   return (
     <section className="ExpenseCategories" id="expenses">
@@ -175,10 +173,7 @@ function ExpenseCategories({
               </tr>
             )}
             {categories.map((category) => {
-              let share = 0;
-              if (totalBudget > 0) {
-                share = Math.round((category.budget / totalBudget) * 100);
-              }
+              const share = getShareOfPlan(category.budget, totalBudget);
 
               const isEditing = editingId === category.id;
 
