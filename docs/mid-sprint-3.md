@@ -19,7 +19,7 @@ Every savings file uses this type.
 ### 2. `src/data/savingsGoalTestData.ts`
 
 Sprint 3 needs at least 10 test goals. They live in this file.
-The page still shows 3 so the screen is not too full.
+The page shows all 10.
 
 ### 3. `src/apis/savingsGoalRepo.ts`
 
@@ -42,7 +42,7 @@ The comment at the top lists what it returns.
 The page is presentation only. It calls `useSavingsGoals()`.
 It still has add, edit, complete, and remove.
 
-### 7. `docs/architecture-sk.md`
+### 7. `docs/architecture.md`
 
 This explains what the hook, service, and repo do,
 why that layer, and where they are used.
@@ -50,11 +50,13 @@ why that layer, and where they are used.
 ## Demo
 
 Open `/goals`. Add a goal. Edit. Complete. Remove.
+Open Home. Click Add $10 on Goals. Home shows the same number.
 
-## What I have not done yet (after mid-sprint)
+## What I finished after mid-sprint
 
-- `savedThisMonth` still comes from App as props. Next I will use a hook for that.
-- The goals hook is used on the Savings page. Next I will use it in a second component.
+- Shared `savedThisMonth` uses a hook, service, and repo. Not App props.
+- Home and Savings both use `useSavedThisMonth`.
+- `useSavingsGoals` is used on the Savings page and in `SavingsTotals`.
 - Jasmine is changing Expenses style. I kept my cards.
 
 ## Retrospective from Sprint 2
@@ -76,6 +78,5 @@ I started on the wrong branch once, so now I check `git branch --show-current` b
 
 ## One sentence
 
-I split Savings into a type, 10 test goals, a repository, a service, and a hook.
-The page uses the hook. Next I will move the shared saved amount off props
-and use the hook in a second component.
+I split Savings into layers and moved the shared saved amount into a hook,
+service, and repo so Home and Savings show the same number.
