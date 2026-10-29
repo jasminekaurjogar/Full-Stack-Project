@@ -30,7 +30,7 @@ export function useSavingsGoals() {
   const [editNote, setEditNote] = useState("");
 
   useEffect(function () {
-    setGoals(savingsGoalService.getGoals().slice(0, 3));
+    setGoals(savingsGoalService.getGoals());
   }, []);
 
   function handleAddGoal(event: React.FormEvent) {
