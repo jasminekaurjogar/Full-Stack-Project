@@ -1,16 +1,14 @@
 import { useState } from "react";
-import type { Dispatch, FormEvent, SetStateAction } from "react";
-import type { ExpenseCategory } from "../../types/ExpenseCategory";
-import { checkCategoryFields } from "../../services/expenseCategoryService";
+import type { FormEvent } from "react";
 import Button from "../Button/Button";
 
 type AddCategoryFormProps = {
-  categories: ExpenseCategory[];
-  setCategories: Dispatch<SetStateAction<ExpenseCategory[]>>;
+  onAdd: (name: string, budget: string, description: string) => string;
 };
 
-// Form receives the list and its setter as props, then updates the page
-function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
+// The form only collects what the user typed. onAdd comes from the hook,
+// and the hook asks the service to save the new category.
+function AddCategoryForm({ onAdd }: AddCategoryFormProps) {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [description, setDescription] = useState("");
@@ -19,24 +17,13 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const budgetNumber = Number(budget);
-    // The service owns the name and budget rules. The form only shows the message.
-    const errorMessage = checkCategoryFields(name, budgetNumber, categories);
+    const errorMessage = onAdd(name, budget, description);
 
     if (errorMessage !== "") {
       setError(errorMessage);
       return;
     }
 
-    const newCategory: ExpenseCategory = {
-      id: Date.now(),
-      name: name.trim(),
-      budget: budgetNumber,
-      description: description.trim() || "No description yet.",
-      image: "/expenses/school-supplies.png",
-    };
-
-    setCategories([...categories, newCategory]);
     setName("");
     setBudget("");
     setDescription("");

@@ -1,121 +1,37 @@
-import { useState } from "react";
-import type { ExpenseCategory } from "../../types/ExpenseCategory";
 import type { SavedThisMonthProps } from "../../types/savedThisMonth";
-import {
-  checkCategoryFields,
-  getShareOfPlan,
-  getTotalBudget,
-} from "../../services/expenseCategoryService";
+import { useExpenseCategories } from "../../hooks/useExpenseCategories";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
 import SavedThisMonthBox from "../SavedThisMonthBox/SavedThisMonthBox";
 import "./ExpenseCategories.css";
 
-// Starting list. useState copies this into state so the user can change it later.
-const startingCategories: ExpenseCategory[] = [
-    {
-      id: 1,
-      name: "Food",
-      budget: 250,
-      description: "Groceries, coffee, and eating out with friends.",
-      image: "/expenses/food.png",
-    },
-    {
-      id: 2,
-      name: "Transportation",
-      budget: 100,
-      description: "Bus passes, gas money, and rides to campus.",
-      image: "/expenses/transportation.png",
-    },
-    {
-      id: 3,
-      name: "School Supplies",
-      budget: 150,
-      description: "Textbooks, notebooks, and other class materials.",
-      image: "/expenses/school-supplies.png",
-    },
-    {
-      id: 4,
-      name: "Entertainment",
-      budget: 75,
-      description: "Movies, games, and weekend plans.",
-      image: "/expenses/entertainment.png",
-    },
-];
-
-// ExpenseCategories is the Feature Page for /expenses
+// ExpenseCategories is the feature page for /expenses.
+// It calls useExpenseCategories for the rows, the edit boxes, and the buttons.
+// The hook asks the expense service to add, save, and remove. The service checks
+// the rules, then calls the repository, which reads the test data.
+// This component only decides what to show on the screen.
 function ExpenseCategories({
   savedThisMonth,
   setSavedThisMonth,
 }: SavedThisMonthProps) {
-  // categories is the current list. setCategories updates the page right away.
-  const [categories, setCategories] = useState(startingCategories);
-  // Only one row is open for editing at a time.
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editName, setEditName] = useState("");
-  const [editBudget, setEditBudget] = useState("");
-  const [editDescription, setEditDescription] = useState("");
-  const [editError, setEditError] = useState("");
-
-  // Keep every category except the one whose Remove button was clicked
-  function removeCategory(idToRemove: number) {
-    const remaining = categories.filter((category) => category.id !== idToRemove);
-    setCategories(remaining);
-    if (editingId === idToRemove) {
-      setEditingId(null);
-      setEditError("");
-    }
-  }
-
-  // Fill the boxes with this category so the user can change the whole row
-  function startEdit(category: ExpenseCategory) {
-    setEditingId(category.id);
-    setEditName(category.name);
-    setEditBudget(String(category.budget));
-    setEditDescription(category.description);
-    setEditError("");
-  }
-
-  function cancelEdit() {
-    setEditingId(null);
-    setEditError("");
-  }
-
-  // Save the name, budget, and description for the row that is open.
-  // The service checks the fields. This function only updates the list on the page.
-  function saveEdit(idToUpdate: number) {
-    const budgetNumber = Number(editBudget);
-    const errorMessage = checkCategoryFields(
-      editName,
-      budgetNumber,
-      categories,
-      idToUpdate,
-    );
-
-    if (errorMessage !== "") {
-      setEditError(errorMessage);
-      return;
-    }
-
-    const updated = categories.map((category) => {
-      if (category.id !== idToUpdate) {
-        return category;
-      }
-      return {
-        ...category,
-        name: editName.trim(),
-        budget: budgetNumber,
-        description: editDescription.trim() || "No description yet.",
-      };
-    });
-
-    setCategories(updated);
-    setEditingId(null);
-    setEditError("");
-  }
-
-  // The service adds the budgets and figures each row's share of the plan.
-  const totalBudget = getTotalBudget(categories);
+  const {
+    categories,
+    totalBudget,
+    shareOfPlan,
+    editingId,
+    editName,
+    editBudget,
+    editDescription,
+    setEditName,
+    setEditBudget,
+    setEditDescription,
+    editError,
+    startEdit,
+    cancelEdit,
+    saveEdit,
+    addNewCategory,
+    deleteCategory,
+  } = useExpenseCategories();
 
   return (
     <section className="ExpenseCategories" id="expenses">
@@ -142,10 +58,7 @@ function ExpenseCategories({
         </div>
       </div>
 
-      <AddCategoryForm
-        categories={categories}
-        setCategories={setCategories}
-      />
+      <AddCategoryForm onAdd={addNewCategory} />
 
       <div className="ExpenseCategories-tableWrap">
         <table className="ExpenseCategories-table">
@@ -167,8 +80,6 @@ function ExpenseCategories({
               </tr>
             )}
             {categories.map((category) => {
-              const share = getShareOfPlan(category.budget, totalBudget);
-
               const isEditing = editingId === category.id;
 
               return (
@@ -213,11 +124,11 @@ function ExpenseCategories({
                       "$" + category.budget
                     )}
                   </td>
-                  <td>{share}% of the plan</td>
+                  <td>{shareOfPlan(category.budget)}% of the plan</td>
                   <td>
                     {isEditing ? (
                       <div className="ExpenseCategories-actions">
-                        <Button type="button" onClick={() => saveEdit(category.id)}>
+                        <Button type="button" onClick={saveEdit}>
                           Save
                         </Button>
                         <Button type="button" variant="secondary" onClick={cancelEdit}>
@@ -238,7 +149,7 @@ function ExpenseCategories({
                         </Button>
                         <Button
                           variant="secondary"
-                          onClick={() => removeCategory(category.id)}
+                          onClick={() => deleteCategory(category.id)}
                         >
                           Remove
                         </Button>
