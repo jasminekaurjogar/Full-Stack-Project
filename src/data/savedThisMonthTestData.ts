@@ -1,7 +1,6 @@
-import type { MonthlySavings } from "../types/savedThisMonth";
+import type { SavedThisMonth } from "../types/SavedThisMonth";
 
-// Starting value from Sprint 2. The repository copies this number.
-// Later a database can replace this file.
-export const savedThisMonthTestData: MonthlySavings = {
+// Start with 325. The repo will copy this later.
+export const savedThisMonthTestData: SavedThisMonth = {
   amount: 325,
 };
