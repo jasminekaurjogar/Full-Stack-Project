@@ -1,73 +1,208 @@
-/* Styles that only apply to the ExpenseCategories component */
+/* Simple table page. Savings Goals stays cream cards. */
 
 .ExpenseCategories {
   margin-top: 28px;
-  padding: 24px;
-  border: 1px solid #d8e7ef;
-  border-left: 7px solid #83b6c9;
-  border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(22px);
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2px solid #83b6c9;
+  border-radius: 8px;
 }
 
-/* Section title uses the blue accent from our style guide */
-.ExpenseCategories h2 {
-  margin-top: 0;
+.ExpenseCategories-kicker {
+  margin: 0;
+  color: #657399;
+  font-weight: bold;
+}
+
+.ExpenseCategories-heading h2 {
+  display: inline-block;
+  margin: 4px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #657399;
   color: #3e6f89;
   font-size: 24px;
 }
 
-/* Summary line stands out from the normal body text */
-.ExpenseCategories-summary {
-  font-weight: bold;
-  color: #3e6f89;
-  border-left: 4px solid #83b6c9;
-  padding-left: 10px;
+.ExpenseCategories-heading p {
+  margin: 0;
+  color: #435466;
 }
 
-/* Turn the list into a grid of cards and remove the bullet points */
-.ExpenseCategories-list {
-  list-style: none;
+.ExpenseCategories-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #e7f3ea;
+  border-radius: 8px;
+}
+
+.ExpenseCategories-stats span {
+  display: block;
+  color: #435466;
+}
+
+.ExpenseCategories-stats strong {
+  color: #29394a;
+  font-size: 22px;
+}
+
+.ExpenseCategories-saved .saved-this-month-box {
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  border: none;
+  background: transparent;
 }
 
-/* Each category is shown as a card with a light blue border */
-.ExpenseCategories-card {
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid #d8e7ef;
-  border-radius: 16px;
-  padding: 16px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.ExpenseCategories-card:hover {
-  box-shadow: 0 8px 20px #9bb4c4;
-  transform: translateY(-4px);
-}
-
-.ExpenseCategories-card:active {
-  transform: translateY(1px);
-}
-
-.ExpenseCategories-card h3 {
+.ExpenseCategories-saved .saved-this-month-box p {
   margin: 0;
-  color: #3e6f89;
-  font-size: 20px;
-}
-
-/* Budget amount is the most important number on the card */
-.ExpenseCategories-budget {
-  margin: 8px 0;
-  font-weight: bold;
-  font-size: 18px;
-  color: #657399;
-}
-
-.ExpenseCategories-card p {
-  font-size: 16px;
   color: #435466;
+}
+
+.ExpenseCategories-saved .saved-this-month-box input {
+  margin-top: 6px;
+  padding: 6px;
+  border: 1px solid #83b6c9;
+  border-radius: 8px;
+}
+
+.ExpenseCategories-form {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f4f8fb;
+  border-radius: 8px;
+}
+
+.ExpenseCategories-formTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ExpenseCategories-form h3 {
+  margin: 0 0 10px;
+  color: #3e6f89;
+  font-size: 18px;
+}
+
+.ExpenseCategories-preview {
+  margin: 0 0 10px;
+  color: #657399;
+  font-weight: bold;
+}
+
+.ExpenseCategories-fields {
+  display: grid;
+  grid-template-columns: 1.1fr 120px 1.4fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.ExpenseCategories-form label {
+  display: block;
+  margin-bottom: 4px;
+  color: #435466;
+  font-weight: bold;
+}
+
+.ExpenseCategories-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.ExpenseCategories-error {
+  margin: 8px 0 0;
+  color: #8b3a3a;
+  font-weight: bold;
+}
+
+.ExpenseCategories-tableWrap {
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.ExpenseCategories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ExpenseCategories-table th {
+  padding: 8px;
+  background-color: #dfeaf2;
+  color: #3e6f89;
+  text-align: left;
+}
+
+.ExpenseCategories-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #d8e7ef;
+  color: #435466;
+}
+
+.ExpenseCategories-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #29394a;
+  font-weight: bold;
+}
+
+.ExpenseCategories-name img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.ExpenseCategories-budget {
+  font-weight: bold;
+  color: #3e6f89;
+  white-space: nowrap;
+}
+
+.ExpenseCategories-name input {
+  flex: 1;
+}
+
+.ExpenseCategories-name input,
+.ExpenseCategories-table td input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.ExpenseCategories-budget input {
+  width: 90px;
+}
+
+.ExpenseCategories-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.ExpenseCategories-actions .ExpenseCategories-error {
+  width: 100%;
+  margin: 0;
+}
+
+.ExpenseCategories-empty {
+  color: #657399;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  .ExpenseCategories-fields {
+    grid-template-columns: 1fr;
+  }
 }
