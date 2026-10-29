@@ -1,4 +1,3 @@
-import type { SavedThisMonthProps } from "../../types/savedThisMonth";
 import { useExpenseCategories } from "../../hooks/useExpenseCategories";
 import Button from "../Button/Button";
 import AddCategoryForm from "../AddCategoryForm/AddCategoryForm";
@@ -11,10 +10,7 @@ import "./ExpenseCategories.css";
 // the rules, then calls the repository, which reads the test data.
 // AddCategoryForm calls this same hook when the user adds a row.
 // This component only decides what to show on the screen.
-function ExpenseCategories({
-  savedThisMonth,
-  setSavedThisMonth,
-}: SavedThisMonthProps) {
+function ExpenseCategories() {
   const {
     categories,
     totalBudget,
@@ -51,10 +47,7 @@ function ExpenseCategories({
           <strong>${totalBudget}</strong>
         </div>
         <div className="ExpenseCategories-saved">
-          <SavedThisMonthBox
-            savedThisMonth={savedThisMonth}
-            setSavedThisMonth={setSavedThisMonth}
-          />
+          <SavedThisMonthBox />
         </div>
       </div>
 

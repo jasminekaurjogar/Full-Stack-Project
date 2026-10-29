@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
 import "./SavingsGoals.css";
 
 // Simple type for one savings goal
@@ -38,15 +39,10 @@ const startingGoals: SavingsGoal[] = [
   },
 ];
 
-interface SavingsGoalsProps {
-  savedThisMonth: number;
-  setSavedThisMonth: (value: number) => void;
-}
-
-export function SavingsGoals({
-  savedThisMonth,
-  setSavedThisMonth,
-}: SavingsGoalsProps) {
+// Savings Goals reads and updates the shared amount through useSavedThisMonth.
+// The hook asks the service to add money, and the repository stores the new total.
+export function SavingsGoals() {
+  const { savedThisMonth, addSavedAmount } = useSavedThisMonth();
   const [goals, setGoals] = useState(startingGoals);
   const [goalName, setGoalName] = useState("");
   const [goalTarget, setGoalTarget] = useState("");
@@ -55,7 +51,7 @@ export function SavingsGoals({
   const [formError, setFormError] = useState("");
 
   function addTenDollars() {
-    setSavedThisMonth(savedThisMonth + 10);
+    addSavedAmount(10);
   }
 
   function handleAddGoal(event: React.FormEvent) {
@@ -117,7 +113,7 @@ export function SavingsGoals({
     });
 
     setGoals(updatedGoals);
-    setSavedThisMonth(savedThisMonth + amount);
+    addSavedAmount(amount);
     setAddAmounts({ ...addAmounts, [id]: "" });
   }
 
