@@ -1,125 +1,91 @@
-/* Expense page is a table. Savings Goals stays a card grid. */
+/* Simple table page. Savings Goals stays cream cards. */
 
 .ExpenseCategories {
   margin-top: 28px;
-  padding: 0 0 18px;
-  border: 1px solid #29394a;
-  border-radius: 4px;
-  background-color: #f7fafc;
-  overflow: hidden;
-}
-
-.ExpenseCategories-heading {
-  padding: 22px 24px 18px;
-  background-color: #29394a;
-  color: #ffffff;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2px solid #83b6c9;
+  border-radius: 8px;
 }
 
 .ExpenseCategories-kicker {
-  margin: 0 0 6px;
-  color: #83b6c9;
-  font-size: 13px;
+  margin: 0;
+  color: #657399;
   font-weight: bold;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .ExpenseCategories-heading h2 {
-  margin: 0 0 8px;
-  color: #ffffff;
-  font-size: 28px;
+  display: inline-block;
+  margin: 4px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #657399;
+  color: #3e6f89;
+  font-size: 24px;
 }
 
 .ExpenseCategories-heading p {
   margin: 0;
-  max-width: 560px;
-  color: #d8e7ef;
+  color: #435466;
 }
 
 .ExpenseCategories-stats {
-  display: grid;
-  grid-template-columns: 160px 200px 1fr;
-  gap: 12px;
-  margin: 16px 18px 0;
-}
-
-.ExpenseCategories-stats > div {
-  padding: 12px 14px;
-  border: 1px solid #c5d4de;
-  border-top: 4px solid #657399;
-  border-radius: 2px;
-  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #e7f3ea;
+  border-radius: 8px;
 }
 
 .ExpenseCategories-stats span {
   display: block;
-  color: #657399;
-  font-size: 13px;
-  font-weight: bold;
+  color: #435466;
 }
 
 .ExpenseCategories-stats strong {
-  display: block;
-  margin-top: 4px;
   color: #29394a;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .ExpenseCategories-saved .saved-this-month-box {
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 0;
   background: transparent;
 }
 
 .ExpenseCategories-saved .saved-this-month-box p {
   margin: 0;
-  color: #657399;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.ExpenseCategories-saved .saved-this-month-box strong {
-  display: inline;
-  color: #29394a;
-  font-size: 16px;
-}
-
-.ExpenseCategories-saved .saved-this-month-box label {
-  display: block;
-  margin-top: 6px;
   color: #435466;
-  font-size: 13px;
-  font-weight: normal;
 }
 
 .ExpenseCategories-saved .saved-this-month-box input {
-  width: 120px;
-  margin-top: 8px;
-  border: 1px solid #c5d4de;
-  border-radius: 2px;
+  margin-top: 6px;
+  padding: 6px;
+  border: 1px solid #83b6c9;
+  border-radius: 8px;
 }
 
 .ExpenseCategories-form {
-  margin: 16px 18px;
-  padding: 14px;
-  border: 1px dashed #657399;
-  border-radius: 2px;
-  background-color: #eef2f8;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f4f8fb;
+  border-radius: 8px;
 }
 
 .ExpenseCategories-formTop {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 12px;
-  align-items: baseline;
+  gap: 8px;
 }
 
 .ExpenseCategories-form h3 {
   margin: 0 0 10px;
-  color: #29394a;
-  font-size: 16px;
+  color: #3e6f89;
+  font-size: 18px;
 }
 
 .ExpenseCategories-preview {
@@ -139,7 +105,6 @@
   display: block;
   margin-bottom: 4px;
   color: #435466;
-  font-size: 13px;
   font-weight: bold;
 }
 
@@ -147,117 +112,96 @@
   width: 100%;
   box-sizing: border-box;
   padding: 8px;
-  border: 1px solid #29394a;
-  border-radius: 2px;
-  background-color: #ffffff;
-  font-size: 15px;
-}
-
-.ExpenseCategories button {
-  border-radius: 2px;
-  background-color: #657399;
-  box-shadow: none;
-  transform: none;
-}
-
-.ExpenseCategories button:hover {
-  background-color: #29394a;
-  box-shadow: none;
-  transform: none;
-}
-
-.ExpenseCategories .secondary-button {
-  background-color: #ffffff;
-  color: #29394a;
-  border: 1px solid #29394a;
-}
-
-.ExpenseCategories .secondary-button:hover {
-  background-color: #29394a;
-  color: #ffffff;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 .ExpenseCategories-error {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   color: #8b3a3a;
   font-weight: bold;
 }
 
 .ExpenseCategories-tableWrap {
-  margin: 0 18px;
+  margin-top: 16px;
   overflow-x: auto;
-  border: 1px solid #29394a;
 }
 
 .ExpenseCategories-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #ffffff;
 }
 
 .ExpenseCategories-table th {
-  padding: 10px 12px;
-  background-color: #3e6f89;
-  color: #ffffff;
-  font-size: 13px;
+  padding: 8px;
+  background-color: #dfeaf2;
+  color: #3e6f89;
   text-align: left;
 }
 
 .ExpenseCategories-table td {
-  padding: 12px;
-  border-top: 1px solid #d8e7ef;
+  padding: 10px 8px;
+  border-bottom: 1px solid #d8e7ef;
   color: #435466;
-  vertical-align: middle;
-}
-
-.ExpenseCategories-table tbody tr:nth-child(even) {
-  background-color: #f3f6fb;
 }
 
 .ExpenseCategories-name {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: #29394a;
   font-weight: bold;
 }
 
 .ExpenseCategories-name img {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
 .ExpenseCategories-budget {
   font-weight: bold;
-  color: #29394a;
+  color: #3e6f89;
   white-space: nowrap;
 }
 
-.ExpenseCategories-share {
-  width: 110px;
-  height: 8px;
-  background-color: #e4e8f2;
+.ExpenseCategories-name input {
+  flex: 1;
 }
 
-.ExpenseCategories-share span {
-  display: block;
-  height: 8px;
-  background-color: #657399;
+.ExpenseCategories-name input,
+.ExpenseCategories-table td input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  border: 1px solid #d8e7ef;
+  border-radius: 8px;
+  font-size: 15px;
 }
 
-.ExpenseCategories-table small {
-  color: #657399;
+.ExpenseCategories-budget input {
+  width: 90px;
+}
+
+.ExpenseCategories-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.ExpenseCategories-actions .ExpenseCategories-error {
+  width: 100%;
+  margin: 0;
 }
 
 .ExpenseCategories-empty {
-  padding: 18px 12px;
   color: #657399;
   font-weight: bold;
 }
 
 @media (max-width: 800px) {
-  .ExpenseCategories-stats,
   .ExpenseCategories-fields {
     grid-template-columns: 1fr;
   }
