@@ -1,15 +1,14 @@
 import { useState } from "react";
-import type { Dispatch, FormEvent, SetStateAction } from "react";
-import type { ExpenseCategory } from "../ExpenseCategories/ExpenseCategories";
+import type { FormEvent } from "react";
+import { useExpenseCategories } from "../../hooks/useExpenseCategories";
 import Button from "../Button/Button";
 
-type AddCategoryFormProps = {
-  categories: ExpenseCategory[];
-  setCategories: Dispatch<SetStateAction<ExpenseCategory[]>>;
-};
-
-// Form receives the list and its setter as props, then updates the page
-function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
+// AddCategoryForm is the second component that calls useExpenseCategories.
+// The expense page calls the same hook for the table. This form only uses
+// addNewCategory. The hook asks the service to check the fields and save the row.
+// The form keeps the typed text and shows the error message.
+function AddCategoryForm() {
+  const { addNewCategory } = useExpenseCategories();
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [description, setDescription] = useState("");
@@ -18,36 +17,13 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const trimmedName = name.trim();
-    const budgetNumber = Number(budget);
+    const errorMessage = addNewCategory(name, budget, description);
 
-    if (trimmedName === "") {
-      setError("Please enter a category name.");
+    if (errorMessage !== "") {
+      setError(errorMessage);
       return;
     }
 
-    const nameAlreadyUsed = categories.some(
-      (category) => category.name.toLowerCase() === trimmedName.toLowerCase(),
-    );
-    if (nameAlreadyUsed) {
-      setError("That category is already on the list.");
-      return;
-    }
-
-    if (Number.isNaN(budgetNumber) || budgetNumber <= 0) {
-      setError("Please enter a budget greater than 0.");
-      return;
-    }
-
-    const newCategory: ExpenseCategory = {
-      id: Date.now(),
-      name: trimmedName,
-      budget: budgetNumber,
-      description: description.trim() || "No description yet.",
-      image: "/expenses/school-supplies.png",
-    };
-
-    setCategories([...categories, newCategory]);
     setName("");
     setBudget("");
     setDescription("");
@@ -56,40 +32,50 @@ function AddCategoryForm({ categories, setCategories }: AddCategoryFormProps) {
 
   return (
     <form className="ExpenseCategories-form" onSubmit={handleSubmit}>
-      <h3>Add a category</h3>
-      <p className="ExpenseCategories-preview">
-        Preview: {name.trim() || "New category"} — $
-        {budget === "" ? "0" : budget} / month
-      </p>
+      <div className="ExpenseCategories-formTop">
+        <h3>Add a row</h3>
+        <p className="ExpenseCategories-preview">
+          {name.trim() || "New category"} · $
+          {budget === "" ? "0" : budget}
+        </p>
+      </div>
 
-      <label htmlFor="category-name">Name</label>
-      <input
-        id="category-name"
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
+      <div className="ExpenseCategories-fields">
+        <div>
+          <label htmlFor="category-name">Name</label>
+          <input
+            id="category-name"
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
 
-      <label htmlFor="category-budget">Monthly budget</label>
-      <input
-        id="category-budget"
-        type="number"
-        min="1"
-        value={budget}
-        onChange={(event) => setBudget(event.target.value)}
-      />
+        <div>
+          <label htmlFor="category-budget">Budget</label>
+          <input
+            id="category-budget"
+            type="number"
+            min="1"
+            value={budget}
+            onChange={(event) => setBudget(event.target.value)}
+          />
+        </div>
 
-      <label htmlFor="category-description">Description</label>
-      <input
-        id="category-description"
-        type="text"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
+        <div>
+          <label htmlFor="category-description">What it covers</label>
+          <input
+            id="category-description"
+            type="text"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </div>
+
+        <Button type="submit">Add row</Button>
+      </div>
 
       {error !== "" && <p className="ExpenseCategories-error">{error}</p>}
-
-      <Button type="submit">Add Category</Button>
     </form>
   );
 }

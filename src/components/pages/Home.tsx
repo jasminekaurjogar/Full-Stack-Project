@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSavedThisMonth } from "../../hooks/useSavedThisMonth";
 
+// Home reads the shared savings amount through useSavedThisMonth.
+// The hook asks the service, and the service reads the repository.
 export function Home() {
+  const { savedThisMonth } = useSavedThisMonth();
   return (
     <main>
       <section className="hero-section">
