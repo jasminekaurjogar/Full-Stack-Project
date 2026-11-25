@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FormEvent } from "react";
+import type { SyntheticEvent } from "react";
 import { useExpenseCategories } from "../../hooks/useExpenseCategories";
 import Button from "../Button/Button";
 
@@ -14,7 +14,7 @@ function AddCategoryForm() {
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
 
     const errorMessage = addNewCategory(name, budget, description);
