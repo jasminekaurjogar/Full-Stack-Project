@@ -1,8 +1,16 @@
 import express from "express";
+import cors from "cors";
 
 // This is the back-end app. The React pages will call it later.
 const app = express();
 const port = 3001;
+
+// Only the Vite front-end is allowed to call this API.
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 
 app.use(express.json());
 
